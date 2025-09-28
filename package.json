@@ -7,7 +7,7 @@
   "main": "./extension.js",
   "displayName": "Tester Syntax HightLighting",
   "description": "Tester语法高亮插件 - 支持CAN总线测试脚本",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "engines": {
     "vscode": "^1.104.0"
   },
@@ -22,6 +22,7 @@
     "testing",
     "syntax-highlighting"
   ],
+  "publisher": "linhanmic",
   "repository": {
     "type": "git",
     "url": "https://github.com/Linhanmic/tester-language-support.git"
@@ -41,6 +42,9 @@
         "configuration": "./language-configuration.json",
         "icon": {
           "light": "./icons/tester-light.svg",
+          "scripts": {
+            "package": "vsce package"
+          },
           "dark": "./icons/tester-dark.svg"
         }
       }
