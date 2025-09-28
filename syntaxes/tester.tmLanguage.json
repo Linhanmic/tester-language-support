@@ -1,0 +1,310 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "tester",
+  "foldingStartMarker": "\\b(tset|ttitle=.*|\\d+\\s+tstart=.*)\\b",
+  "foldingStopMarker": "\\b(tend|ttitle-end)\\b",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#folding-blocks"
+    },
+    {
+      "include": "#tcaninit-command"
+    },
+    {
+      "include": "#tcans-command"
+    },
+    {
+      "include": "#tcanr-command"
+    },
+    {
+      "include": "#tdelay-command"
+    },
+    {
+      "include": "#ttitle-command"
+    },
+    {
+      "include": "#tstart-assignment"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.tester",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.tester",
+          "begin": "----------",
+          "end": "----------"
+        }
+      ]
+    },
+    "folding-blocks": {
+      "patterns": [
+        {
+          "name": "meta.block.config.tester",
+          "begin": "\\b(tset)\\b",
+          "end": "\\b(tend)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.control.tester" 
+            }
+          },
+          "endCaptures": {
+            "1": {
+              "name": "keyword.control.tester" 
+            }
+          },
+          "patterns": [
+            {
+              "include": "#tcaninit-command"
+            },
+            {
+              "include": "#comments"
+            }
+          ]
+        },
+        {
+          "name": "meta.block.test-suite.tester",
+          "begin": "\\b(ttitle=.*)\\b",
+          "end": "\\b(ttitle-end)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.section.tester" 
+            }
+          },
+          "endCaptures": {
+            "1": {
+              "name": "keyword.control.tester" 
+            }
+          },
+          "patterns": [
+            {
+              "include": "#test-case-block"
+            },
+            {
+              "include": "#comments"
+            }
+          ]
+        },
+        {
+          "name": "meta.block.test-case.tester",
+          "begin": "\\b(\\d+)\\s+(tstart=.*)\\b",
+          "end": "\\b(tend)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "constant.numeric.tester" 
+            },
+            "2": {
+              "name": "entity.name.tag.tester" 
+            }
+          },
+          "endCaptures": {
+            "1": {
+              "name": "entity.name.tag.tester" 
+            }
+          },
+          "patterns": [
+            {
+              "include": "#tcans-command"
+            },
+            {
+              "include": "#tcanr-command"
+            },
+            {
+              "include": "#tdelay-command"
+            },
+            {
+              "include": "#comments"
+            }
+          ]
+        }
+      ]
+    },
+    "test-case-block": {
+      "patterns": [
+        {
+          "name": "meta.block.test-case.tester",
+          "begin": "\\b(\\d+)\\s+(tstart=.*)\\b",
+          "end": "\\b(tend)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "constant.numeric.tester"
+            },
+            "2": {
+              "name": "entity.name.tag.tester"
+            }
+          },
+          "endCaptures": {
+            "1": {
+              "name": "keyword.control.tester"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#tcans-command"
+            },
+            {
+              "include": "#tcanr-command"
+            },
+            {
+              "include": "#tdelay-command"
+            },
+            {
+              "include": "#comments"
+            }
+          ]
+        }
+      ]
+    },
+    "tcaninit-command": {
+      "patterns": [
+        {
+          "name": "keyword.control.tester",
+          "match": "\\btcaninit\\b"
+        },
+        {
+          "name": "variable.parameter.tester",
+          "match": "\\b\\d+\\b"
+        }
+      ]
+    },
+    "tcans-command": {
+      "patterns": [
+        {
+          "name": "keyword.control.tester",
+          "match": "\\btcans\\b"
+        },
+        {
+          "name": "variable.other.tester",
+          "match": "\\b\\d+\\b"
+        },
+        {
+          "name": "constant.numeric.hex.tester",
+          "match": "\\b[0-9A-Fa-f]{2}\\b"
+        }
+      ]
+    },
+    "tcanr-command": {
+      "patterns": [
+        {
+          "name": "keyword.control.tester",
+          "match": "\\btcanr\\b"
+        },
+        {
+          "name": "variable.other.tester",
+          "match": "\\b\\d+\\b"
+        },
+        {
+          "name": "constant.numeric.range.tester",
+          "match": "\\b\\d+\\.\\d+-\\d+\\.\\d+\\b"
+        },
+        {
+          "name": "constant.numeric.range.tester",
+          "match": "\\b\\d+-\\d+\\b"
+        },
+        {
+          "name": "constant.numeric.byte.bit.tester",
+          "match": "\\b\\d+\\.\\d+-\\d+\\.\\d+\\b"
+        },
+        {
+          "name": "keyword.other.tester",
+          "match": "\\bprint\\b"
+        }
+      ]
+    },
+    "tdelay-command": {
+      "patterns": [
+        {
+          "name": "keyword.control.tester",
+          "match": "\\btdelay\\b"
+        },
+        {
+          "name": "constant.numeric.tester",
+          "match": "\\b\\d+\\b"
+        }
+      ]
+    },
+    "ttitle-command": {
+      "patterns": [
+        {
+          "name": "keyword.control.tester",
+          "match": "\\bttitle\\b"
+        },
+        {
+          "name": "keyword.control.tester",
+          "match": "\\bttitle-end\\b"
+        },
+        {
+          "name": "entity.name.section.tester",
+          "match": "ttitle=.*"
+        }
+      ]
+    },
+    "tstart-assignment": {
+      "patterns": [
+        {
+          "name": "entity.name.tag.tester", 
+          "match": "\\btstart\\b"
+        },
+        {
+          "name": "constant.numeric.tester", 
+          "match": "\\b\\d+\\b"
+        },
+        {
+          "name": "entity.name.tag.tester", 
+          "match": "tstart=.*"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.tester",
+          "match": "\\b(tset|tend|tstart|ttitle|ttitle-end|tcans|tcanr|tdelay|tcaninit)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.tester",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.tester",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.tester",
+          "match": "\\b\\d+\\b"
+        },
+        {
+          "name": "constant.numeric.hex.tester",
+          "match": "\\b[0-9A-Fa-f]{2}\\b"
+        },
+        {
+          "name": "constant.numeric.float.tester",
+          "match": "\\b\\d+\\.\\d+\\b"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.tst"
+}

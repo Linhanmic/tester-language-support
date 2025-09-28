@@ -1,0 +1,84 @@
+{
+  "activationEvents": [
+    "onCommand:tester.insertTstartWithAutoNumber",
+    "onLanguage:tester"
+  ],
+  "name": "tester-syntax-hightlighting",
+  "main": "./extension.js",
+  "displayName": "Tester Syntax HightLighting",
+  "description": "Tester语法高亮插件 - 支持CAN总线测试脚本",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.104.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "tester",
+    "can",
+    "automotive",
+    "testing",
+    "syntax-highlighting"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "tester",
+        "aliases": [
+          "Tester",
+          "tester",
+          "CAN测试脚本"
+        ],
+        "extensions": [
+          ".tst"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/tester-light.svg",
+          "dark": "./icons/tester-dark.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "tester",
+        "scopeName": "source.tst",
+        "path": "./syntaxes/tester.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "tester",
+        "path": "./snippets/tester.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "tester.insertTstartWithAutoNumber",
+        "title": "插入自动递增 tstart"
+      }
+    ],
+    "configuration": {
+      "title": "Tester Language",
+      "properties": {
+        "tester.syntaxHighlighting": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用Tester语法高亮"
+        },
+        "tester.folding": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用代码折叠功能"
+        },
+        "tester.autoComplete": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用自动完成功能"
+        }
+      }
+    }
+  }
+}

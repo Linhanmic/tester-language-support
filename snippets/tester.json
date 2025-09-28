@@ -1,0 +1,54 @@
+{
+  "tset-tend block": {
+    "prefix": "tset",
+    "body": ["tset", "$1", "tend"],
+    "description": "创建配置信息块"
+  },
+  "ttitle-ttitle-end block": {
+    "prefix": "ttitle",
+    "body": ["ttitle=${1:测试用例标题}", "$2", "ttitle-end"],
+    "description": "创建测试用例集"
+  },
+  "test case": {
+    "prefix": "tstart",
+    "body": ["${1:1} tstart=${2:用例描述}", "  $3", "tend"],
+    "description": "创建测试用例"
+  },
+  "tcaninit command": {
+    "prefix": "tcaninit",
+    "body": [
+      "tcaninit ${1:70},${2:0},${3:0},${4:500}${5:,${6:2000}}//${7:注释}"
+    ],
+    "description": "CAN设备初始化命令"
+  },
+  "tcans command": {
+    "prefix": "tcans",
+    "body": ["tcans ${1:121},${2:12 02 00 00 00 00 00 00},${3:100},${4:1}"],
+    "description": "CAN发送命令"
+  },
+  "tcanr command": {
+    "prefix": "tcanr",
+    "body": ["tcanr ${1:121},${2:1.0-2.3},${3:530},${4:1000}"],
+    "description": "CAN接收命令"
+  },
+  "tcanr print command": {
+    "prefix": "tcanr-print",
+    "body": ["tcanr ${1:121},${2:0.0-7.7},print"],
+    "description": "CAN打印输出命令"
+  },
+  "tdelay command": {
+    "prefix": "tdelay",
+    "body": ["tdelay ${1:1000}"],
+    "description": "延时命令"
+  },
+  "comment block": {
+    "prefix": "comment",
+    "body": ["----------${1:注释}----------"],
+    "description": "块注释"
+  },
+  "line comment": {
+    "prefix": "//",
+    "body": ["// ${1:注释}"],
+    "description": "行注释"
+  }
+}
